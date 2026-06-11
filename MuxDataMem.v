@@ -1,0 +1,16 @@
+module MuxDataMem (
+    input [32:0] ResultadoULA,      // Resultado da ULA
+    input [32:0] DadoLido,       // Dado da memória
+    input  MemPraReg,     // Controle de fonte de memoria para registrador
+    output reg [5:0] saida        // Saída
+);
+
+    always @(*) begin
+        if (MemPraReg == 1'b0) begin
+            saida = ResultadoULA;
+        end else begin
+            saida = DadoLido;
+        end
+    end
+
+endmodule

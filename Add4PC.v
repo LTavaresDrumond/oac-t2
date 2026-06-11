@@ -1,0 +1,11 @@
+module Add4PC(
+	input [31:0] PC,
+	
+	output reg [31:0] NovoPC
+);
+
+	always@(*) 
+	begin
+	NovoPC = PC + 32'd4;
+	end
+endmodule

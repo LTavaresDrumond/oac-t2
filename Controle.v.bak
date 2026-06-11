@@ -1,0 +1,20 @@
+module Controle(
+	input[31:0] Instrucao,
+	
+	output reg [1:0] ULAop,
+	output reg EscreverReg,
+	output reg FonteULa,
+	output reg EscreveMemoria,
+	output reg MemoriaReg,
+	output reg LerMemoria,
+	output reg Branch
+);
+
+	always @(*)
+	begin
+		case(Instrucao[6:0])
+			7'b
+		
+		endcase
+	end
+endmodule

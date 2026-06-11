@@ -1,0 +1,23 @@
+module ControleULA(
+	input [9:0] Funct10,
+	input [1:0] ULAOp,
+	output [3:0] ULACtrl
+),
+
+always @(*)
+	// Se o ULAop for 00 (lw e sw) vai pra add, se for 01 (branch) vai pra sub, se for 00 (tipo-r) vai pra ver o funct
+	case (ULAOp)
+		2'b00: ULACtrl <= OPADD;
+		2'b01: ULACtrl <= OPSUB;
+		2'b10:
+	case (Funct10)
+		FUNADD: ULACtrl <= OPADD;
+		FUNSUB: ULACtrl <= OPSUB;
+		FUNAND: ULACtrl <= OPAND;
+		FUNOR: ULACtrl <= OPOR;
+		FUNSLT: ULACtrl <= OPSLT;
+		default: ULACtrl <= 4’b0000;
+		endcase
+		default: ULACtrl <= 4’b0000;
+	endcase
+endmodule

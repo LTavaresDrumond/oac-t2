@@ -1,0 +1,16 @@
+module MuxRdIm (
+    input [5:0] DadoLeitura2,       // DadoLeitura2
+    input [32:0] Imediato,       // Imediato
+    input [1:0] FonteUla,     // Controle de fonte da ULA
+    output [5:0] saída        // Saída
+);
+
+    always @(*) begin
+        if (FonteUla == 1'b0) begin
+            saída = DadoLeitura2;
+        end else begin
+            saída = Imediato;
+        end
+    end
+
+endmodule
