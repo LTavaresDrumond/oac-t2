@@ -1,16 +1,18 @@
 module MuxDataMem (
-    input [32:0] ResultadoULA,      // Resultado da ULA
-    input [32:0] DadoLido,       // Dado da memória
-    input  MemPraReg,     // Controle de fonte de memoria para registrador
-    output reg [5:0] saida        // Saída
+    input [31:0] ResultadoULA,    // Origem: ULA (Ex: add, sub)
+    input [31:0] DadoLido,        // Origem: Memória de Dados (Ex: lw)
+    input [31:0] PC4,             // Origem: Somador PC + 4 (Ex: jal, jalr)
+    input [1:0]  MemPraReg,       // Sinal de controlo agora com 2 bits
+    output reg [31:0] saida       // Corrigido para 32 bits
 );
 
     always @(*) begin
-        if (MemPraReg == 1'b0) begin
-            saida = ResultadoULA;
-        end else begin
-            saida = DadoLido;
-        end
+        case (MemPraReg)
+            2'b00: saida = ResultadoULA;
+            2'b01: saida = DadoLido;
+            2'b10: saida = PC4;           // Encaminha o endereço de retorno
+            default: saida = 32'd0;
+        endcase
     end
 
 endmodule

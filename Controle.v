@@ -5,7 +5,7 @@ module Controle(
     output reg EscreverReg,     
     output reg FonteULA,        
     output reg EscreveMemoria,  
-    output reg MemoriaReg,      
+    output reg [1:0] MemoriaReg,      
     output reg LerMemoria,     
     output reg Branch          
 );
@@ -16,7 +16,7 @@ module Controle(
         EscreverReg    = 1'b0;
         FonteULA       = 1'b0;
         EscreveMemoria = 1'b0;
-        MemoriaReg     = 1'b0;
+        MemoriaReg     = 2'b00;
         LerMemoria     = 1'b0;
         Branch         = 1'b0;
 
@@ -26,7 +26,7 @@ module Controle(
             7'b0110011: begin
                 EscreverReg    = 1'b1; 
                 FonteULA       = 1'b0; 
-                MemoriaReg     = 1'b0; 
+                MemoriaReg     = 2'b00; 
                 ULAop          = 2'b10; 
             end
 
@@ -35,7 +35,7 @@ module Controle(
                 EscreverReg    = 1'b1; 
                 FonteULA       = 1'b1; 
                 LerMemoria     = 1'b1; 
-                MemoriaReg     = 1'b1; 
+                MemoriaReg     = 2'b01; 
                 ULAop          = 2'b00; 
             end
 
@@ -53,19 +53,11 @@ module Controle(
                 ULAop          = 2'b01; 
             end
 
-            // tipo i
-            7'b0010011: begin
-                EscreverReg    = 1'b1; 
-                FonteULA       = 1'b1; 
-                MemoriaReg     = 1'b0; 
-                ULAop          = 2'b00; 
-            end
-
-            // tipo i (addi, andi, ori, xori, slti)
+            // tipo i (addi, andi, ori, xori, slti) - Bloco duplicado removido
             7'b0010011: begin
                 EscreverReg    = 1'b1;
                 FonteULA       = 1'b1; 
-                MemoriaReg     = 1'b0;
+                MemoriaReg     = 2'b00; 
                 ULAop          = 2'b11; 
             end
 
@@ -73,7 +65,7 @@ module Controle(
             7'b0110111: begin
                 EscreverReg    = 1'b1;
                 FonteULA       = 1'b1; 
-                MemoriaReg     = 1'b0;
+                MemoriaReg     = 2'b00; 
                 ULAop          = 2'b00; 
             end
 
@@ -81,7 +73,7 @@ module Controle(
             7'b0010111: begin
                 EscreverReg    = 1'b1;
                 FonteULA       = 1'b1;
-                MemoriaReg     = 1'b0;
+                MemoriaReg     = 2'b00; 
                 ULAop          = 2'b00;
             end
 
@@ -89,7 +81,7 @@ module Controle(
             7'b1101111, 7'b1100111: begin
                 EscreverReg    = 1'b1;
                 FonteULA       = 1'b1;
-                MemoriaReg     = 1'b0;
+                MemoriaReg     = 2'b10;
             end
 
             default: begin
