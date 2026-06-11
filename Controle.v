@@ -61,6 +61,37 @@ module Controle(
                 ULAop          = 2'b00; 
             end
 
+            // tipo i (addi, andi, ori, xori, slti)
+            7'b0010011: begin
+                EscreverReg    = 1'b1;
+                FonteULA       = 1'b1; 
+                MemoriaReg     = 1'b0;
+                ULAop          = 2'b11; 
+            end
+
+            // tipo u (lui)
+            7'b0110111: begin
+                EscreverReg    = 1'b1;
+                FonteULA       = 1'b1; 
+                MemoriaReg     = 1'b0;
+                ULAop          = 2'b00; 
+            end
+
+            // tipo u (auipc)
+            7'b0010111: begin
+                EscreverReg    = 1'b1;
+                FonteULA       = 1'b1;
+                MemoriaReg     = 1'b0;
+                ULAop          = 2'b00;
+            end
+
+            // tipo j (jal) e jalr
+            7'b1101111, 7'b1100111: begin
+                EscreverReg    = 1'b1;
+                FonteULA       = 1'b1;
+                MemoriaReg     = 1'b0;
+            end
+
             default: begin
                 
             end

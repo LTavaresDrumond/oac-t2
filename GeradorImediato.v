@@ -25,6 +25,11 @@ module GeradorImediato (
                 Imediato = { {12{Instrucao[31]}}, Instrucao[19:12], Instrucao[20], Instrucao[30:21], 1'b0 };
             end
 
+            // tipo u (lui, auipc)
+            7'b0110111, 7'b0010111: begin
+                Imediato = { Instrucao[31:12], 12'b0 };
+            end
+
             default: Imediato = 32'd0;
         endcase
     end

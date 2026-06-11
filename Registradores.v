@@ -5,30 +5,30 @@ module Registradores (
     input [24:20] rs2,            // Registrador de leitura 2 
     input [11:7] rd,              // Registrador de escrita 
     input [31:0] DadoEscrita,      // Dado a ser gravado
-    output reg [5:0] DadoLeitura1, // variavel reg 
-    output reg [5:0] DadoLeitura2  // variavel reg
+    output reg [31:0] DadoLeitura1, // variavel reg 
+    output reg [31:0] DadoLeitura2  // variavel reg
 );
 
     // Banco de registradores, é como se fosse a memória
-    reg [5:0] BancoRegistradores [0:31];
+    reg [31:0] BancoRegistradores [0:31];
 
     // Lendo os registradores
     always @(*) 
 	 begin
-        if (rs1 == 5'b0)
-            DadoLeitura1 = 6'b0; 
+        if (rs1 == 31'b0)
+            DadoLeitura1 = 32'b0; 
         else
             DadoLeitura1 = BancoRegistradores[rs1];
             
-        if (rs2 == 5'b0)
-            DadoLeitura2 = 6'b0; 
+        if (rs2 == 31'b0)
+            DadoLeitura2 = 32'b0; 
         else
             DadoLeitura2 = BancoRegistradores[rs2];
     end
 
     // Escrita na borda de clock, se o controle de escrita estiver 1 se o registrador de destino nao for o zero
     always @(posedge clk) begin
-        if (EscritaRegistrador && (rd != 5'b0)) begin
+        if (EscritaRegistrador && (rd != 32'b0)) begin
             BancoRegistradores[rd] <= DadoEscrita;
         end
     end
