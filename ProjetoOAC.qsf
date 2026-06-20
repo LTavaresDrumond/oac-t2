@@ -35,28 +35,32 @@
 #
 # -------------------------------------------------------------------------- #
 
-
 set_global_assignment -name FAMILY "Cyclone IV GX"
 set_global_assignment -name DEVICE auto
-set_global_assignment -name TOP_LEVEL_ENTITY AddPCIm
+set_global_assignment -name TOP_LEVEL_ENTITY Quadro
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:24:29  JUNE 03, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/Registradores.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/MuxRdIm.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/ControleULA.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/ULA.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/Add4PC.v"
-set_global_assignment -name BDF_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/Quadro.bdf"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/MemoriaDados.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/GeradorImediato.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/AddPCIm.v"
+
+# --- Arquivos do Projeto ---
+set_global_assignment -name BDF_FILE "Quadro.bdf"
+set_global_assignment -name VERILOG_FILE "Registradores.v"
+set_global_assignment -name VERILOG_FILE "ProgramCounter.v"
+set_global_assignment -name VERILOG_FILE "MemoriaInstrucoes.v"
+set_global_assignment -name VERILOG_FILE "MemoriaDados.v"
+set_global_assignment -name VERILOG_FILE "MuxRdIm.v"
+set_global_assignment -name VERILOG_FILE "MuxDataMem.v"
+set_global_assignment -name VERILOG_FILE "Controle.v"
+set_global_assignment -name VERILOG_FILE "ControleULA.v"
+set_global_assignment -name VERILOG_FILE "ULA.v"
+set_global_assignment -name VERILOG_FILE "Add4PC.v"
+set_global_assignment -name VERILOG_FILE "AddPCIm.v"
+set_global_assignment -name VERILOG_FILE "GeradorImediato.v"
+
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/MuxDataMem.v"
-set_global_assignment -name VERILOG_FILE "../../Users/gabri/OneDrive/햞ea de Trabalho/Controle.v"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
